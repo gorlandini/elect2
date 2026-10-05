@@ -1,0 +1,14 @@
+{
+  "name": "um-voto-pelo-brasil",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "seed": "node scripts/seed.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

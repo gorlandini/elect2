@@ -145,7 +145,7 @@ async function login(){
 async function loadSettings(){
   try{
     const res = await fetch('/api/admin/settings', {
-      headers: { 'x-admin-secret': adminSecret }
+      headers: { 'x-admin-secret': encodeURIComponent(adminSecret) }
     });
     const s = await res.json();
     document.getElementById('fGoal').value = s.goal || '';
@@ -177,7 +177,7 @@ async function saveSettings(){
   try{
     const res = await fetch('/api/admin/settings', {
       method: 'POST',
-      headers: {'Content-Type':'application/json', 'x-admin-secret': adminSecret},
+      headers: {'Content-Type':'application/json', 'x-admin-secret': encodeURIComponent(adminSecret)},
       body: JSON.stringify(body)
     });
     const data = await safeParseJson(res);
@@ -207,7 +207,7 @@ document.getElementById('seedBtn').addEventListener('click', async () => {
   try{
     const res = await fetch('/api/admin/seed', {
       method: 'POST',
-      headers: { 'x-admin-secret': adminSecret }
+      headers: { 'x-admin-secret': encodeURIComponent(adminSecret) }
     });
     const data = await res.json();
     if(res.ok){
